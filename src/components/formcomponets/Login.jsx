@@ -2,7 +2,11 @@ import React from 'react'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <input type='text' placeholder='email'></input>
+      <input type='text' placeholder='password'></input>
+      <button>login</button>
+    </div>
   )
 }
 
