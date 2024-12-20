@@ -1,33 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from 'react'
+
+import Login from './/components/formcomponets/Login'
 import Header from './components/Header'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './components/Home'
-import Login from './components/formcomponets/Login'
+import { Outlet, useNavigate } from 'react-router-dom'
+import {onAuthStateChanged } from "firebase/auth";
+import { auth } from './components/utils/firebase';
+import { useDispatch } from 'react-redux';
+import { addUser, removeUser } from './components/utils/userSlice';
 
 
-function App() {
-  
-  const appRoutes=createBrowserRouter([
-     {
-       path:'/',
-       element:<Home></Home>,
-       children:[
-        {
-          path:'/',
-          element:<Login></Login>
-        }
-       ]
+const App = () => {
+   const dispath=useDispatch();
+   const navigate=useNavigate()
+   useEffect(()=>{
+   onAuthStateChanged(auth, (user) => {
+      if (user) {
        
-     }
-  ])
-
+        dispath(addUser({uid:user.uid,email:user.email,dispalyname:user.displayName}))
+        
+         
+      } else {
+          dispath(removeUser())
+          navigate('/')
+      }
+    });
+   },[])
   return (
-    <RouterProvider router={appRoutes}>
-
-    </RouterProvider>
+    <div>
+     
+      <Outlet></Outlet>
+    </div>
   )
 }
 
