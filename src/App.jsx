@@ -1,7 +1,4 @@
 import React, { useEffect } from 'react'
-
-import Login from './/components/formcomponets/Login'
-import Header from './components/Header'
 import { Outlet, useNavigate } from 'react-router-dom'
 import {onAuthStateChanged } from "firebase/auth";
 import { auth } from './components/utils/firebase';
@@ -17,7 +14,7 @@ const App = () => {
       if (user) {
        
         dispath(addUser({uid:user.uid,email:user.email,dispalyname:user.displayName}))
-        
+        navigate('/userhome');
          
       } else {
           dispath(removeUser())

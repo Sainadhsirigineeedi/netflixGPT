@@ -7,9 +7,8 @@ import Signup from "./components/formcomponets/Signup";
 import { Provider } from "react-redux";
 import appstore from "./components/utils/appStore";
 import Userhome from "./components/usercomponents/Userhome";
-import Error from "./components/Error";
 import Allmovies from "./components/usercomponents/Allmovies";
-
+import Moviedetails from "./components/usercomponents/Moviedetails";
 
 const approutes = createBrowserRouter([
   {
@@ -25,20 +24,19 @@ const approutes = createBrowserRouter([
         element: <Signup></Signup>,
       },
       {
-        path:'/userhome',
-        element:<Userhome></Userhome>,
-        children:[
+        path: "/userhome",
+        element: <Userhome></Userhome>,
+        children: [
           {
-            path:'/userhome/',
-            element:<Allmovies></Allmovies>
+            path: "/userhome",
+            element: <Allmovies></Allmovies>,
+          },
+          {
+            path:'/userhome/moviedetails/:id',
+            element:<Moviedetails></Moviedetails>
           }
-        ]
+        ],
       },
-      
-      {
-        path:'/error',
-        element:<Error></Error>
-      }
     ],
   },
 ]);

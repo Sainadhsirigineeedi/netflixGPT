@@ -29,15 +29,12 @@ const Signup = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-         
-          
           updateProfile(auth.currentUser, {
             displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
           }).then(() => {
-            navigate('/')
+             navigate('/')
           }).catch((error) => {
-            // An error occurred
-            // ...
+           
           });
           // ...
         })
@@ -55,7 +52,7 @@ const Signup = () => {
         className="flex justify-center items-center  bg-gray-900
       bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/729ce5c2-d831-436a-8c9d-f38fea0b99b3/web/IN-en-20241209-TRIFECTA-perspective_4aef76eb-7d5b-4be0-93c0-5f67320fd878_medium.jpg')] min-h-screen bg-cover bg-center"
       >
-        <div className="card bg-gray-900 w-96 shadow-xl">
+        <div className="card  bg-black bg-opacity-70 w-96 shadow-xl">
           <div className="card-body">
             <h1 className="text-white ml-2 font-bold">Signup buddy</h1>
              
