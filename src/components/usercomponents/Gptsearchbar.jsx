@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { addGptMoviedata } from "../utils/gptSlice";
 
 const Gptsearchbar = () => {
-  const secretKey = process.env.SECRET_KEY;
+  const secretKey = import.meta.env.VITE_SECRETKEY;
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
