@@ -11,7 +11,7 @@ const Moviecard = ({ movie }) => {
     navigate(`/userhome/moviedetails/${id}`)
   }
   return (
-    <div className="px-2 w-40 hover:shadow-lg" onClick={()=>{handle(movie.id)}}> 
+    <div className="px-1 w-40 hover:shadow-lg" onClick={()=>{handle(movie.id)}}> 
       <img src={movieposterUrl + movie?.poster_path} alt="movie" className="w-full" />
     </div>
   );

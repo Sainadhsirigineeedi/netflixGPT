@@ -8,21 +8,23 @@ import Secondrycontainer from "./Secondrycontainer";
 import Gptpage from "./Gptpage";
 
 const Allmovies = () => {
-  const isGpt=useSelector((store)=>store.gptSlice.isGpt);
+  const isGpt = useSelector((store) => store.gptSlice.isGpt);
   useNowplayingmovies();
   usePopular();
   useToprated();
   useUpcoming();
+  
   return (
-   <div>
-      {
-          isGpt?(<Gptpage></Gptpage>):(<div>
-          <Maincontainer></Maincontainer>
-          <Secondrycontainer></Secondrycontainer>
-        </div>)
-    }
-   </div>
-   
+    <div>
+      {isGpt ? (
+        <Gptpage />
+      ) : (
+        <div>
+          <Maincontainer />
+          <Secondrycontainer />
+        </div>
+      )}
+    </div>
   );
 };
 

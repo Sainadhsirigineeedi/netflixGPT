@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { options } from "../../constanants";
 import { useDispatch } from "react-redux";
 import { addGptMoviedata } from "../utils/gptSlice";
+import { addgptTailerdata } from "../utils/moviesSlice";
 
 const Gptsearchbar = () => {
   const secretKey = import.meta.env.VITE_SECRETKEY;
@@ -54,7 +55,8 @@ const Gptsearchbar = () => {
       
       if (validMovies.length > 0) {
         dispatch(addGptMoviedata(validMovies));
-        setSearchText(""); // Clear search after successful search
+        setSearchText(""); 
+        dispatch(addgptTailerdata(null))
       } else {
         setError("No movies found. Please try a different search.");
       }
@@ -75,7 +77,7 @@ const Gptsearchbar = () => {
   return (
     <div className="w-full p-2">
       <div className="relative flex flex-col gap-2">
-        {/* Search Input and Button */}
+       
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
           <div className="relative flex-grow">
             <input
@@ -116,7 +118,7 @@ const Gptsearchbar = () => {
           </button>
         </div>
 
-        {/* Error Message */}
+        
         {error && (
           <div className="text-red-500 text-sm mt-2 text-center bg-red-500/10 p-2 rounded-lg">
             {error}
